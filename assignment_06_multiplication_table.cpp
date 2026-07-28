@@ -57,3 +57,66 @@
 #include <iostream>
 using namespace std;
 
+#include <iostream>
+using namespace std;
+
+// Function prototypes
+void printSingleTable(int num);
+void printTablesUpToN(int n);
+
+int main() {
+    int choice;
+
+    cout << "========================================\n";
+    cout << "    MULTIPLICATION TABLE GENERATOR      \n";
+    cout << "========================================\n";
+    cout << "1. Print table for a single number (Part A)\n";
+    cout << "2. Print tables from 1 to N (Part B)\n";
+    cout << "Enter your choice (1-2): ";
+    cin >> choice;
+
+    if (choice == 1) {
+        // --- PART A ---
+        int num;
+        cout << "\nEnter a number: ";
+        cin >> num;
+
+        printSingleTable(num);
+
+    } else if (choice == 2) {
+        // --- PART B ---
+        int n;
+        cout << "\nEnter N (tables from 1 to N): ";
+        cin >> n;
+
+        // Validation: N must be a positive integer
+        if (n <= 0) {
+            cout << "Error: N must be a positive integer." << endl;
+        } else {
+            printTablesUpToN(n);
+        }
+
+    } else {
+        cout << "Invalid choice! Exiting program." << endl;
+    }
+
+    return 0;
+}
+
+// PART A: Function to print the multiplication table for a single number from 1 to 12
+void printSingleTable(int num) {
+    cout << "\nMultiplication Table for " << num << ":\n";
+    for (int i = 1; i <= 12; i++) {
+        cout << num << "  x  " << i << "  =  " << (num * i) << endl;
+    }
+}
+
+// PART B: Function to print multiplication tables for every number from 1 to N
+void printTablesUpToN(int n) {
+    for (int i = 1; i <= n; i++) {
+        printSingleTable(i);
+        if (i < n) {
+            cout << "---------------------------" << endl;
+        }
+    }
+}
